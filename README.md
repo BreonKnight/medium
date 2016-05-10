@@ -1,6 +1,8 @@
 
 Medium Coding Challenge
 ==
+#Tech used
+HTML, CSS, Javascript, jQuery, and MaterializeCSS
 
 ##How to set this up:
 1. in your terminal, navigate to the appropriate directory and run `npm install`
