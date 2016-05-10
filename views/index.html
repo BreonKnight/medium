@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Medium Coding Challenge</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!--Import Google Icon Font-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body>
+    <h1 class="center-align head">Text Anaylyzer</h1>
+    <div class="container white">
+      <div class="row">
+        <div class="col s12">
+          <form>
+            <textarea name="textarea" rows="20" cols="80" class="text-input"> </textarea>
+            <input type="submit" value="Publish" id="entry">
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 black white-text">
+          <h5>Entry</h5>
+          <ul id="words-list">
+
+          </ul>
+        </div>
+        <div class="col s6 black white-text">
+          <h5>Stats</h5>
+          <ul id="stat-list">
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
