@@ -10,16 +10,14 @@ $(document).ready(function(){
 
   //This function finds how many words are in the text area.
   function getWordCount(paragraphs) {
-    var regExp = /[a-zA-Z]+/ig;
+    //I was trying to pattern match ([0-9]\°C to detect this as a word. My count is offset by 1 with the sample case.
+    var regExp = /[a-zA-Z]+)/ig;
     var count = paragraphs.match(regExp).length;
     if(count === 0) {
-      console.log("There are no words.");
       return "There are no words.";
     } else if (count === 1) {
-      console.log("There is 1 word.");
       return "There is 1 word.";
     }else{
-      console.log("There are " + (count) + " words.")
       return "There are " + count + " words.";
     }
   }
@@ -37,13 +35,10 @@ $(document).ready(function(){
       count = sentences.length;
     }
     if (count > 1) {
-      console.log("There are " + count + " sentences.");
       return "There are " + count + " sentences.";
     } else if (count === 1) {
-      console.log("There is " + count + " sentence.");
       return "There is " + count + " sentence.";
     } else {
-      console.log("There are no sentences.");
       return "There are no sentences.";
     }
   }
@@ -60,13 +55,10 @@ $(document).ready(function(){
     }
     count = paragraphArray.length;
     if (count > 1) {
-      console.log("There are " + count + " paragraphs.");
       return "There are " + count + " paragraphs.";
     } else if (count === 1) {
-      console.log("There is " + count + " paragraph.");
       return "There is " + count + " paragraph.";
     } else {
-      console.log("There are no paragraphs.");
       return "There are no paragraphs.";
     }
   }
@@ -84,7 +76,6 @@ $(document).ready(function(){
       }
     });
     wordNeighbors.sort();
-    console.log(mostPopularBigram(wordNeighbors));
     return mostPopularBigram(wordNeighbors);
   }
 
@@ -104,7 +95,6 @@ $(document).ready(function(){
   //gets number of vowels in a text field.
   function vowels(text) {
     var wordtext = text.match(/[aeiou]/gi).length;
-    console.log("There are " + wordtext + " vowels in this text area.");
     return "There are " + wordtext + " vowels in this text area.";
   }
 
@@ -113,7 +103,6 @@ $(document).ready(function(){
     var regExp = /[a-zA-Z]+/ig;
     var words = text.match(regExp);
     var word = words[Math.floor(Math.random()*words.length)];
-    console.log("Random word of the day: " + word + ".")
     return "Random word of the day: " + word + ".";
   }
 
@@ -146,7 +135,6 @@ $(document).ready(function(){
     });
     console.log(languages)
     language = languages.pop();
-    console.log("This is the " + language.name + " language.")
     return "This is the " + language.name + " language.";
   }
 
@@ -165,7 +153,6 @@ $(document).ready(function(){
 
       $("#words-list").append("<li>" + "<p>" + text + "</p>" + "</li>");
       $("#stat-list").append("<li>" +"<p> Word Count:" + getWordCount(text) + "</p>"
-        +"<p> Word Count: " + wordCount + "</p>"
         +"<p> Sentence Count: " + sentenceCount + "</p>"
         +"<p> Paragraph Count: " + paragraphCount + "</p>"
         +"<p> Bigram: " + bigramCount + "</p>"
