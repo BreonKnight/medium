@@ -10,8 +10,8 @@ $(document).ready(function(){
 
   //This function finds how many words are in the text area.
   function getWordCount(paragraphs) {
-    //I was trying to pattern match ([0-9]\°C to detect this as a word. My count is offset by 1 with the sample case.
-    var regExp = /[a-zA-Z]+)/ig;
+    //I was trying to pattern match ([0-9]\°C to detect this as a word. My count is offset by 1 with the sample text.
+    var regExp = /[a-zA-Z]+/ig;
     var count = paragraphs.match(regExp).length;
     if(count === 0) {
       return "There are no words.";
@@ -67,7 +67,6 @@ $(document).ready(function(){
   function bigram(paragraphs) {
     var wordNeighbors = [];
     var words = paragraphs.replace(/[^a-zA-Z ]/g, "").split(" ");
-    console.log(words + " Before function");
     words.forEach(function (element, index) {
       if (words[index + 1]) {
         wordNeighbors.push([element , words[index + 1]]);
@@ -133,42 +132,31 @@ $(document).ready(function(){
     languages.sort(function (a,b) {
       return parseFloat(a.count) - parseFloat(b.count);
     });
-    console.log(languages)
     language = languages.pop();
     return "This is the " + language.name + " language.";
   }
 
-  var textField = $('#entry').on("click", function (event) {
-      event.preventDefault();
-      $("#words-list").empty()
-      $("#stat-list").empty()
-      var text = $(".text-input").val();
-      var wordCount = getWordCount(text);
-      var sentenceCount = getSetenceCount(text);
-      var paragraphCount = getParagraphCount(text);
-      var bigramCount = bigram(text);
-      var vowel = vowels(text);
-      var random = randomWord(text);
-      var language = detectLanguage(text);
+  $('#entry').on("click", function (event) {
+    event.preventDefault();
+    $("#words-list").empty()
+    $("#stat-list").empty()
+    var text = $(".text-input").val();
+    var wordCount = getWordCount(text);
+    var sentenceCount = getSetenceCount(text);
+    var paragraphCount = getParagraphCount(text);
+    var bigramCount = bigram(text);
+    var vowel = vowels(text);
+    var random = randomWord(text);
+    var language = detectLanguage(text);
 
-      $("#words-list").append("<li>" + "<p>" + text + "</p>" + "</li>");
-      $("#stat-list").append("<li>" +"<p> Word Count:" + getWordCount(text) + "</p>"
-        +"<p> Sentence Count: " + sentenceCount + "</p>"
-        +"<p> Paragraph Count: " + paragraphCount + "</p>"
-        +"<p> Bigram: " + bigramCount + "</p>"
-        +"<p> Vowel Count: " + vowel + "</p>"
-        +"<p> Random Word: " + random + "</p>"
-        +"<p> Language: " + language + "</p>" +
+    $("#words-list").append("<li>" + "<p>" + text + "</p>" + "</li>");
+    $("#stat-list").append("<li>" +"<p> Word Count:" + getWordCount(text) + "</p>"
+      +"<p> Sentence Count: " + sentenceCount + "</p>"
+      +"<p> Paragraph Count: " + paragraphCount + "</p>"
+      +"<p> Bigram: " + bigramCount + "</p>"
+      +"<p> Vowel Count: " + vowel + "</p>"
+      +"<p> Random Word: " + random + "</p>"
+      +"<p> Language: " + language + "</p>" +
       "</li>");
   });
-  //test cases provided by Jeff
-  getWordCount(mySentence);
-  getSetenceCount(mySentence);
-  getParagraphCount(mySentence);
-  bigram(mySentence);
-  vowels(mySentence);
-  randomWord(mySentence);
-  detectLanguage(mySentence);
-  detectLanguage(frenchSentence);
-  detectLanguage(italianSentence);
 });
